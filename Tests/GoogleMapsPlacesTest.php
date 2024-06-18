@@ -19,9 +19,11 @@ use Geocoder\Exception\UnsupportedOperation;
 use Geocoder\IntegrationTest\BaseTestCase;
 use Geocoder\Provider\GoogleMapsPlaces\GoogleMapsPlaces;
 use Geocoder\Provider\GoogleMapsPlaces\Model\GooglePlace;
+use Geocoder\Provider\GoogleMapsPlaces\Model\GooglePlaceAutocomplete;
 use Geocoder\Provider\GoogleMapsPlaces\Model\OpeningHours;
 use Geocoder\Provider\GoogleMapsPlaces\Model\Photo;
 use Geocoder\Provider\GoogleMapsPlaces\Model\PlusCode;
+use Geocoder\Provider\GoogleMapsPlaces\Model\StructuredFormatting;
 use Geocoder\Query\GeocodeQuery;
 use Geocoder\Query\ReverseQuery;
 
@@ -271,9 +273,9 @@ class GoogleMapsPlacesTest extends BaseTestCase
         $provider = $this->getGoogleMapsProvider();
 
         $query = ReverseQuery::fromCoordinates(-33.892674, 151.200727)
-                ->withData('mode', GoogleMapsPlaces::GEOCODE_MODE_NEARBY)
-                // ->withData('rankby', 'prominence'); // =default
-                ->withData('radius', 500)
+            ->withData('mode', GoogleMapsPlaces::GEOCODE_MODE_NEARBY)
+            // ->withData('rankby', 'prominence'); // =default
+            ->withData('radius', 500)
         ;
 
         $results = $provider->reverseQuery($query);
